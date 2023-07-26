@@ -35,7 +35,7 @@ struct BlockedAppListView: View {
                 Spacer()
                 
                 Button {
-                    
+                    isPresented.toggle()
                 } label: {
                     Text("앱 선택하기")
                         .font(.system(size: 18, weight: .bold))
@@ -45,7 +45,7 @@ struct BlockedAppListView: View {
                         .cornerRadius(8)
                 }
                 .padding(12)
-                .familyActivityPicker(isPresented: $isPresented, selection: $bm.newSelection)
+                .familyActivityPicker(headerText: "App Version 1.0.0 : 최대 5개까지 선택할 수 있습니다.", isPresented: $isPresented, selection: $bm.newSelection)
             }
         }
         .cornerRadius(16)
