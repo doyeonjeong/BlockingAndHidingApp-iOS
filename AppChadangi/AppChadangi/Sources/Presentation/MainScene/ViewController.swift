@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
         let hostingController = UIHostingController(
             rootView: BlockedAppListView()
         )
+        hostingController.view.backgroundColor = .clear
         return hostingController
     }()
 
