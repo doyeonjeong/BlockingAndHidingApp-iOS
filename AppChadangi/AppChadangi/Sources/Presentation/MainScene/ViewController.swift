@@ -15,8 +15,10 @@ class MainViewController: UIViewController {
     private lazy var _footerView = FooterView()
     
     private lazy var _mainView: UIHostingController<some View> = {
+        let bm = BlockManager()
         let hostingController = UIHostingController(
             rootView: BlockedAppListView()
+                .environmentObject(bm)
         )
         hostingController.view.backgroundColor = .clear
         return hostingController

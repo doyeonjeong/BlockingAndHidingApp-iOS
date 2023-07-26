@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import FamilyControls
 
 struct BlockedAppListView: View {
+    
+    @EnvironmentObject var bm: BlockManager
+    @State var isPresented = false
+    
     var body: some View {
         ZStack {
             Color(.init(red: 0.27, green: 0.27, blue: 0.27, alpha: 0.2))
@@ -30,7 +35,7 @@ struct BlockedAppListView: View {
                 Spacer()
                 
                 Button {
-                    print("button pressed")
+                    
                 } label: {
                     Text("앱 선택하기")
                         .font(.system(size: 18, weight: .bold))
@@ -40,9 +45,14 @@ struct BlockedAppListView: View {
                         .cornerRadius(8)
                 }
                 .padding(12)
+                .familyActivityPicker(isPresented: $isPresented, selection: $bm.newSelection)
             }
         }
         .cornerRadius(16)
+        
+        .onAppear {
+            bm.requestAuthorization()
+        }
         
     }
 }
