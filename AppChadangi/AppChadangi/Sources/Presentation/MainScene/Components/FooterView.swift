@@ -37,10 +37,19 @@ class FooterView: UIView {
         super.init(coder: coder)
         _setup()
     }
+
+}
+
+// MARK: - Setup
+extension FooterView {
     
     private func _setup() {
-        addSubview(_blockingButton)
+        _addSubviews()
         _setConstraints()
+    }
+    
+    private func _addSubviews() {
+        addSubview(_blockingButton)
     }
     
     private func _setConstraints() {
@@ -49,7 +58,13 @@ class FooterView: UIView {
         }
     }
     
+}
+
+// MARK: - Actions
+extension FooterView {
+    
     @objc private func didTapBlocking() {
         delegate?.didTapBlockingButton()
     }
+    
 }

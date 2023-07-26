@@ -40,10 +40,19 @@ class HeaderView: UIView {
         _setup()
     }
     
+}
+
+// MARK: - Setup
+extension HeaderView {
+    
     private func _setup() {
+        _addSubviews()
+        _setConstraints()
+    }
+    
+    private func _addSubviews() {
         addSubview(_headerAppIconImageView)
         addSubview(_settingIconButton)
-        _setConstraints()
     }
     
     private func _setConstraints() {
@@ -61,7 +70,13 @@ class HeaderView: UIView {
         }
     }
     
+}
+
+// MARK: - Actions
+extension HeaderView {
+    
     @objc private func didTapSettings() {
         delegate?.didTapSettingsButton()
     }
+    
 }
