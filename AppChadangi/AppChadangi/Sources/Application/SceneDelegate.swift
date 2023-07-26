@@ -19,6 +19,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = ViewController()
+        
+        let gradientView = UIView(frame: windowScene.coordinateSpace.bounds)
+        gradientView.applyGradient(colos: [
+            UIColor(red: 0.99, green: 0.65, blue: 0.04, alpha: 1.00).cgColor,
+            UIColor(red: 0.85, green: 0.11, blue: 0.07, alpha: 1.00).cgColor
+        ])
+        window?.insertSubview(gradientView, at: 0)
+        
         window?.makeKeyAndVisible()
     }
 
