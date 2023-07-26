@@ -8,5 +8,10 @@
 import UIKit
 
 extension UIView {
-    
+    func applyGradient(colos: [CGColor]) {
+        let gradient = CAGradientLayer()
+        gradient.colors = colos
+        gradient.frame = bounds
+        layer.insertSublayer(gradient, at: 0)
+    }
 }
