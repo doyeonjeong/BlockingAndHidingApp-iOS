@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = ViewController()
+        window?.rootViewController = MainViewController()
         
         let gradientView = UIView(frame: windowScene.coordinateSpace.bounds)
         gradientView.applyGradient(colos: [
