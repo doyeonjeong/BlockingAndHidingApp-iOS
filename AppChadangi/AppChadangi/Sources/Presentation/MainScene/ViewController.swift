@@ -11,15 +11,17 @@ import SnapKit
 class MainViewController: UIViewController {
     
     private lazy var _headerView = HeaderView()
+    private lazy var _footerView = FooterView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         _setup()
     }
-
 }
 
+// MARK: - Setup
 extension MainViewController {
+    
     private func _setup() {
         _addSubviews()
         _setConstraints()
@@ -28,10 +30,12 @@ extension MainViewController {
     
     private func _addSubviews() {
         view.addSubview(_headerView)
+        view.addSubview(_footerView)
     }
     
     private func _setDelegate() {
         _headerView.delegate = self
+        _footerView.delegate = self
     }
     
     private func _setConstraints() {
@@ -40,13 +44,29 @@ extension MainViewController {
             $0.left.right.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(70)
         }
+        
+        _footerView.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
+            $0.height.equalTo(70)
+            $0.left.right.equalToSuperview().inset(30)
+        }
     }
 }
 
+// MARK: - HeaderViewDelegate
 extension MainViewController: HeaderViewDelegate {
     
     func didTapSettingsButton() {
-        // TODO: Modal View lPresentationStyle = .pageSheet
+        print(#function)
+        // TODO: Show Modal View
     }
+}
+
+// MARK: - FooterViewDelegate
+extension MainViewController: FooterViewDelegate {
     
+    func didTapBlockingButton() {
+        print(#function)
+        // TODO: Show Alert
+    }
 }
