@@ -24,7 +24,7 @@ class HeaderView: UIView {
     
     private lazy var _settingIconButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "gear"), for: .normal)
+        button.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
         button.tintColor = .white
         button.addTarget(self, action: #selector(didTapSettings), for: .touchUpInside)
         return button
