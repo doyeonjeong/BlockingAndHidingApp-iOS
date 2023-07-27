@@ -87,8 +87,9 @@ extension MainViewController {
 extension MainViewController: HeaderViewDelegate {
     
     func didTapSettingsButton() {
-        print(#function)
-        // TODO: Show Modal View
+        let menuVC = MenuViewController()
+        menuVC.modalPresentationStyle = .pageSheet
+        present(menuVC, animated: true)
     }
     
 }
