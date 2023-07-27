@@ -8,17 +8,52 @@
 import Foundation
 import FamilyControls
 import ManagedSettings
+import DeviceActivity
+import Combine
+
+extension DeviceActivityName {
+    static let daily = Self("daily")
+}
 
 final class BlockManager: ObservableObject {
-    
-    @Published var newSelection: FamilyActivitySelection = .init()
     
     var selectedAppTokens: Set<ApplicationToken> {
         return newSelection.applicationTokens
     }
     
-    var selectedApps: Set<Application> {
-        return newSelection.applications
+    let store = ManagedSettingsStore()
+    
+    @Published var isEmpty: Bool = true
+    @Published var isBlocked: Bool = false
+    @Published var newSelection: FamilyActivitySelection = .init() {
+        didSet {
+            isEmpty = selectedAppTokens.isEmpty
+        }
+    }
+
+    func block(completion: @escaping (Result<Void, Error>) -> Void) {
+        let deviceActivityCenter = DeviceActivityCenter()
+        
+        let blockSchedule = DeviceActivitySchedule(
+            intervalStart: DateComponents(hour: 0, minute: 0),
+            intervalEnd: DateComponents(hour: 23, minute: 59),
+            repeats: true
+        )
+
+        store.shield.applications = selectedAppTokens
+        do {
+            try deviceActivityCenter.startMonitoring(DeviceActivityName.daily, during: blockSchedule)
+        } catch {
+            completion(.failure(error))
+            return
+        }
+        isBlocked = true
+        completion(.success(()))
+    }
+    
+    func release() {
+        isBlocked = false
+        store.shield.applications = []
     }
     
     func requestAuthorization() {

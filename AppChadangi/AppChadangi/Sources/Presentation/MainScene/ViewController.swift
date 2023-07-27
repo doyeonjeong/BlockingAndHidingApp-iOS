@@ -11,14 +11,18 @@ import SnapKit
 
 class MainViewController: UIViewController {
     
-    private lazy var _headerView = HeaderView()
-    private lazy var _footerView = FooterView()
+    let blockManager = BlockManager()
     
+    private lazy var _headerView = HeaderView()
+    
+    private lazy var _footerView: FooterView = {
+        return FooterView(blockManager: self.blockManager)
+    }()
+
     private lazy var _mainView: UIHostingController<some View> = {
-        let bm = BlockManager()
         let hostingController = UIHostingController(
             rootView: BlockedAppListView()
-                .environmentObject(bm)
+                .environmentObject(self.blockManager)
         )
         hostingController.view.backgroundColor = .clear
         return hostingController
@@ -93,8 +97,30 @@ extension MainViewController: HeaderViewDelegate {
 extension MainViewController: FooterViewDelegate {
     
     func didTapBlockingButton() {
-        print(#function)
-        // TODO: Show Alert
+
+        blockManager.block { result in
+            switch result {
+            case .success():
+                let alertController = UIAlertController(title: "차단 성공", message: "차단했습니다.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "확인", style: .default))
+                self.present(alertController, animated: true)
+            case .failure(let error):
+                let alertController = UIAlertController(title: "차단 실패", message: "차단에 실패했습니다.\n[오류: \(error.localizedDescription)]", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "확인", style: .default))
+                self.present(alertController, animated: true)
+            }
+        }
+        
+    }
+    
+    func didTapReleaseButton() {
+        
+        blockManager.release()
+        
+        let alertController = UIAlertController(title: "차단 해제", message: "차단이 해제되었습니다.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "확인", style: .default))
+        present(alertController, animated: true)
+        
     }
     
 }

@@ -7,11 +7,13 @@
 
 import SwiftUI
 import FamilyControls
+import DeviceActivity
 
 struct BlockedAppListView: View {
     
     @EnvironmentObject var bm: BlockManager
     @State var isPresented = false
+    @State var selection = FamilyActivitySelection()
     
     var body: some View {
         ZStack {
@@ -26,16 +28,32 @@ struct BlockedAppListView: View {
                 
                 Spacer()
                 
-                Text("아직 앱을 선택하지 않았습니다.\n앱을 선택하고 차단해보세요.")
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: 18))
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                
+                if bm.isEmpty {
+                    Text("아직 앱을 선택하지 않았습니다.\n앱을 선택하고 차단해보세요.")
+                        .multilineTextAlignment(.center)
+                        .font(.system(size: 18))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                } else {
+                    ZStack {
+                        Color.clear
+                        
+                        ScrollView {
+                            LazyVStack(alignment: .leading) {
+                                ForEach(Array(selection.applicationTokens), id: \.self) { selected in
+                                    Label(selected)
+                                        .padding(.horizontal, 20)
+                                        .padding(.bottom, 8)
+                                }
+                            }
+                        }
+                    }
+                }
                 Spacer()
                 
                 Button {
                     isPresented.toggle()
+                    
                 } label: {
                     Text("앱 선택하기")
                         .font(.system(size: 18, weight: .bold))
@@ -45,7 +63,10 @@ struct BlockedAppListView: View {
                         .cornerRadius(8)
                 }
                 .padding(12)
-                .familyActivityPicker(headerText: "App Version 1.0.0 : 최대 5개까지 선택할 수 있습니다.", isPresented: $isPresented, selection: $bm.newSelection)
+                .familyActivityPicker(isPresented: $isPresented, selection: $bm.newSelection)
+                .onChange(of: bm.newSelection) { newValue in
+                    selection = newValue
+                }
             }
         }
         .cornerRadius(16)
@@ -57,8 +78,10 @@ struct BlockedAppListView: View {
     }
 }
 
+
 struct BlockedAppListView_Previews: PreviewProvider {
     static var previews: some View {
         BlockedAppListView()
     }
 }
+
