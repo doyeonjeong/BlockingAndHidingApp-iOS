@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = MainViewController()
         
         let gradientView = UIView(frame: windowScene.coordinateSpace.bounds)
-        gradientView.applyGradient(colos: [
+        gradientView.applyGradient(colors: [
             UIColor(red: 0.99, green: 0.65, blue: 0.04, alpha: 1.00).cgColor,
             UIColor(red: 0.85, green: 0.11, blue: 0.07, alpha: 1.00).cgColor
         ])
