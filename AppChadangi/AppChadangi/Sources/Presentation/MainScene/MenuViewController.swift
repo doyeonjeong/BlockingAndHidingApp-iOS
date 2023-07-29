@@ -104,7 +104,7 @@ extension MenuViewController: UITableViewDelegate {
             _openSetting()
             break
         case 2:
-            // TODO: openAppStore(appId: "6455080663")
+            _openAppStoreReview(appId: "6455080663")
             break
         default:
             break
@@ -171,6 +171,17 @@ extension MenuViewController {
 
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
+        }
+    }
+    
+    private func _openAppStoreReview(appId: String) {
+        let url = "itms-apps://itunes.apple.com/app/" + appId;
+        if let url = URL(string: url), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
         }
     }
     
