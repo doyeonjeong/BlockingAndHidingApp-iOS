@@ -101,7 +101,7 @@ extension MenuViewController: UITableViewDelegate {
         
         switch indexPath.row {
         case 1:
-            // TODO: openSetting()
+            _openSetting()
             break
         case 2:
             // TODO: openAppStore(appId: "6455080663")
@@ -163,6 +163,14 @@ extension MenuViewController {
             } else {
                 UIApplication.shared.openURL(url)
             }
+        }
+    }
+    
+    private func _openSetting() {
+        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
         }
     }
     
