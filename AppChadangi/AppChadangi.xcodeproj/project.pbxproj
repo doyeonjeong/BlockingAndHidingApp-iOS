@@ -19,7 +19,6 @@
 		8F9201652A711F7E0058D7F5 /* BlockedAppListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9201642A711F7E0058D7F5 /* BlockedAppListView.swift */; };
 		8F9201692A717CCF0058D7F5 /* BlockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9201682A717CCF0058D7F5 /* BlockManager.swift */; };
 		8F92016B2A729A960058D7F5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92016A2A729A960058D7F5 /* MenuViewController.swift */; };
-		8FA362D62A74039200985B04 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA362D52A74039200985B04 /* NotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +36,6 @@
 		8F9201662A717C5A0058D7F5 /* AppChadangi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppChadangi.entitlements; sourceTree = "<group>"; };
 		8F9201682A717CCF0058D7F5 /* BlockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockManager.swift; sourceTree = "<group>"; };
 		8F92016A2A729A960058D7F5 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		8FA362D52A74039200985B04 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				8F9201682A717CCF0058D7F5 /* BlockManager.swift */,
-				8FA362D52A74039200985B04 /* NotificationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -263,7 +260,6 @@
 			files = (
 				8F92015B2A710AEC0058D7F5 /* HeaderView.swift in Sources */,
 				8F9201572A70FDD30058D7F5 /* UIView+Extension.swift in Sources */,
-				8FA362D62A74039200985B04 /* NotificationManager.swift in Sources */,
 				8F9201312A70DEF90058D7F5 /* ViewController.swift in Sources */,
 				8F9201692A717CCF0058D7F5 /* BlockManager.swift in Sources */,
 				8F92016B2A729A960058D7F5 /* MenuViewController.swift in Sources */,
@@ -412,7 +408,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 62SDS28JUT;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "AppChadangi/Resources/Supporting Files/Info.plist";
+				INFOPLIST_FILE = AppChadangi/Resources/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "앱 차단기";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -444,7 +440,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 62SDS28JUT;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "AppChadangi/Resources/Supporting Files/Info.plist";
+				INFOPLIST_FILE = AppChadangi/Resources/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "앱 차단기";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

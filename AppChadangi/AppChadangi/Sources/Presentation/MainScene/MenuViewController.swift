@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import StoreKit
 
 final class MenuViewController: UIViewController {
     
@@ -14,13 +15,13 @@ final class MenuViewController: UIViewController {
         
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "questionmark.circle")
-        imageView.tintColor = .white
+        imageView.tintColor = .white.withAlphaComponent(0.75)
         imageView.contentMode = .scaleAspectFit
         imageView.sizeToFit()
         
         let label = UILabel()
         label.text = "문제가 있나요?"
-        label.textColor = .white
+        label.textColor = .white.withAlphaComponent(0.75)
         label.textAlignment = .right
         label.sizeToFit()
         
@@ -30,8 +31,23 @@ final class MenuViewController: UIViewController {
         stackView.alignment = .trailing
         stackView.sizeToFit()
         
+        // TODO: TapGesture - mail to me
+        
         return stackView
     }()
+    
+    private lazy var _menuListTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.backgroundColor = .clear
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MenuCell")
+        return tableView
+    }()
+    
+    private var _isAlertAuthorization: Bool = false
+    
+    private let _appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +74,7 @@ extension MenuViewController {
     
     private func _addSubviews() {
         view.addSubview(_contactButton)
+        view.addSubview(_menuListTableView)
     }
     
     private func _setConstraints() {
@@ -67,11 +84,85 @@ extension MenuViewController {
             $0.height.equalTo(50)
         }
         
+        _menuListTableView.snp.makeConstraints {
+            $0.top.equalTo(_contactButton.snp.bottom).offset(16)
+            $0.left.right.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
     }
     
 }
 
-// MARK: - Adctions
+// MARK: - UITableViewDelegate
+extension MenuViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch indexPath.row {
+        case 1:
+            // TODO: openSetting()
+            break
+        case 2:
+            // TODO: openAppStore(appId: "6455080663")
+            break
+        default:
+            break
+        }
+    }
+    
+}
+
+// MARK: - UITableViewDataSource
+extension MenuViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath)
+        cell.backgroundColor = .clear
+        cell.selectionStyle = .none
+        
+        var content = cell.defaultContentConfiguration()
+        
+        switch indexPath.row {
+        case 0:
+            content.attributedText = makeAttributedText(title: "App Version")
+            content.secondaryAttributedText = makeAttributedText(title: _appVersion, size: 16, weight: .light)
+            content.prefersSideBySideTextAndSecondaryText = true
+        case 1:
+            content.attributedText = makeAttributedText(title: "스크린 타임 권한 설정")
+        case 2:
+            content.attributedText = makeAttributedText(title: "앱 평가하기")
+        default:
+            content.text = ""
+            content.textProperties.color = .white
+        }
+        
+        content.textProperties.color = .black
+        cell.contentConfiguration = content
+        return cell
+    }
+    
+}
+
+// MARK: - Actions
 extension MenuViewController {
+    
+}
+
+extension MenuViewController {
+    
+    private func makeAttributedText(title: String = "", size: CGFloat = 18, weight: UIFont.Weight = .regular) -> NSAttributedString? {
+        return NSAttributedString(string: title, attributes: [
+            .font: UIFont.systemFont(ofSize: size, weight: weight),
+            .foregroundColor: UIColor.white,
+        ])
+    }
     
 }
