@@ -31,7 +31,8 @@ final class MenuViewController: UIViewController {
         stackView.alignment = .trailing
         stackView.sizeToFit()
         
-        // TODO: TapGesture - mail to me
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self._mailToMe))
+        stackView.addGestureRecognizer(tapGesture)
         
         return stackView
     }()
@@ -153,6 +154,17 @@ extension MenuViewController: UITableViewDataSource {
 
 // MARK: - Actions
 extension MenuViewController {
+    
+    @objc private func _mailToMe() {
+        let email = "debby_@kakao.com"
+        if let url = URL(string: "mailto:\(email)") {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
     
 }
 
