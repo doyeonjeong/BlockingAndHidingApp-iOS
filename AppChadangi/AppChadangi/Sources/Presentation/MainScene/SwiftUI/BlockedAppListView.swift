@@ -45,6 +45,18 @@ struct BlockedAppListView: View {
                                         .padding(.horizontal, 20)
                                         .padding(.bottom, 8)
                                 }
+                                
+                                ForEach(Array(selection.categoryTokens), id: \.self) { selected in
+                                    Label(selected)
+                                        .padding(.horizontal, 20)
+                                        .padding(.bottom, 8)
+                                }
+                                
+                                ForEach(Array(selection.webDomainTokens), id: \.self) { selected in
+                                    Label(selected)
+                                        .padding(.horizontal, 20)
+                                        .padding(.bottom, 8)
+                                }
                             }
                         }
                     }

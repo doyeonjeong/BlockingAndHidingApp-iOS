@@ -28,8 +28,15 @@ final class BlockManager: ObservableObject {
     @Published var newSelection: FamilyActivitySelection = .init() {
         didSet {
             isEmpty = selectedAppTokens.isEmpty
+            applications = newSelection.applicationTokens
+            categories = newSelection.categoryTokens
+            webDomains = newSelection.webDomainTokens
         }
     }
+    
+    @Published var applications: Set<ApplicationToken> = .init()
+    @Published var categories: Set<ActivityCategoryToken> = .init()
+    @Published var webDomains: Set<WebDomainToken> = .init()
 
     func block(completion: @escaping (Result<Void, Error>) -> Void) {
         let deviceActivityCenter = DeviceActivityCenter()
