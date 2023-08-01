@@ -17,26 +17,15 @@ extension DeviceActivityName {
 
 final class BlockManager: ObservableObject {
     
-    var selectedAppTokens: Set<ApplicationToken> {
-        return newSelection.applicationTokens
-    }
-    
     let store = ManagedSettingsStore()
     
     @Published var isEmpty: Bool = true
     @Published var isBlocked: Bool = false
     @Published var newSelection: FamilyActivitySelection = .init() {
         didSet {
-            isEmpty = selectedAppTokens.isEmpty
-            applications = newSelection.applicationTokens
-            categories = newSelection.categoryTokens
-            webDomains = newSelection.webDomainTokens
+            isEmpty = newSelection.applicationTokens.isEmpty
         }
     }
-    
-    @Published var applications: Set<ApplicationToken> = .init()
-    @Published var categories: Set<ActivityCategoryToken> = .init()
-    @Published var webDomains: Set<WebDomainToken> = .init()
 
     func block(completion: @escaping (Result<Void, Error>) -> Void) {
         let deviceActivityCenter = DeviceActivityCenter()
@@ -47,7 +36,7 @@ final class BlockManager: ObservableObject {
             repeats: true
         )
 
-        store.shield.applications = selectedAppTokens
+        store.shield.applications = newSelection.applicationTokens
         do {
             try deviceActivityCenter.startMonitoring(DeviceActivityName.daily, during: blockSchedule)
         } catch {
