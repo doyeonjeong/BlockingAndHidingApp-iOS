@@ -23,8 +23,9 @@ https://www.figma.com/file/sNuhox6VOSGFn2xky7wISr/AppChadangi?type=design&node-i
 <img width="280" alt="앱차단기2" src="https://github.com/doyeonjeong/BlockingAndHidingApp-iOS/assets/108422901/02fe5b38-a594-482a-a54e-6974f2d5e47c">
 <img width="280" alt="앱차단기3" src="https://github.com/doyeonjeong/BlockingAndHidingApp-iOS/assets/108422901/e1330521-9199-4ef9-844f-42d11800beb6">
 
-<aside>
-💡 ScreenTimeAPI를 이용한 앱 차단 & 숨기기 기능의 앱 입니다.
+
+
+### 💡 ScreenTimeAPI를 이용한 앱 차단 & 숨기기 기능의 앱 입니다.
 
 YouTube Shorts를 컨텐츠 중독에서 벗어나고자 직접 기획 & 디자인 & 개발했습니다.
 
@@ -34,14 +35,14 @@ iOS15 이상부터 적용 가능하며, 3가지 프레임워크를 통해 동작
 이를 공부하기 위해 선배 개발자들에게 공식 문서를 보면서 모르는 부분,
 키워드 관련 고민을 적극적으로 나누며 Apple 공식 문서 기반의 프로그램 개발을 완료했습니다.
 
-</aside>
 
-<aside>
-💡 처음엔 YouTube만 차단하는 앱으로 구현중이었으나 단일 AppToken을 생성하는 기술 구현에 막히고, 동료와 함께하지 못하게되면서 배포를 위해 혼자서 다시 시작했습니다.
+### 💡 처음엔 YouTube만 차단하는 앱으로 구현중이었으나
+단일 AppToken을 생성하는 기술 구현에 막히고, 동료와 함께하지 못하게되면서 배포를 위해 혼자서 다시 시작했습니다.
 
-**당시 작성했던 기획서와 Source :** https://github.com/doyeonjeong/Tublock [Tublock PRD(제품 요구 사항 정의서)](https://www.notion.so/Tublock-PRD-ce15af7e553d485dbc3ff7a120ee0758?pvs=21) 
+#### 🔗 당시 작성했던 기획서와 Source
+- https://github.com/doyeonjeong/Tublock
+- [Tublock PRD(제품 요구 사항 정의서)](https://www.notion.so/Tublock-PRD-ce15af7e553d485dbc3ff7a120ee0758?pvs=21) 
 
-</aside>
 
 ## 🛠️ 사용 기술 및 라이브러리
 
