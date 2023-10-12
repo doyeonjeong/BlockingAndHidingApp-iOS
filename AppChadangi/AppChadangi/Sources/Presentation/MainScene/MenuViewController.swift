@@ -46,6 +46,14 @@ final class MenuViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var _controlSwitch: UISwitch = {
+        let swicth: UISwitch = UISwitch()
+        swicth.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height - 200)
+        swicth.isOn = true
+        swicth.addTarget(self, action: #selector(onClickSwitch(sender:)), for: UIControl.Event.valueChanged)
+        return swicth
+    }()
+    
     private var _isAlertAuthorization: Bool = false
     
     private let _appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0"
@@ -68,8 +76,8 @@ extension MenuViewController {
     
     private func _setUI() {
         self.view.applyGradient(colors: [
-            UIColor(red: 1.00, green: 0.68, blue: 0.23, alpha: 1.00).cgColor,
-            UIColor(red: 0.88, green: 0.24, blue: 0.16, alpha: 1.00).cgColor
+            UIColor(red: 0.99, green: 0.65, blue: 0.04, alpha: 1.00).cgColor,
+            UIColor(red: 0.85, green: 0.11, blue: 0.07, alpha: 1.00).cgColor
         ])
     }
     
@@ -117,7 +125,7 @@ extension MenuViewController: UITableViewDelegate {
 extension MenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -137,8 +145,11 @@ extension MenuViewController: UITableViewDataSource {
             content.secondaryAttributedText = makeAttributedText(title: _appVersion, size: 16, weight: .light)
             content.prefersSideBySideTextAndSecondaryText = true
         case 1:
-            content.attributedText = makeAttributedText(title: "스크린 타임 권한 설정")
+            content.attributedText = makeAttributedText(title: "앱 숨기기 모드")
+            cell.accessoryView = _controlSwitch
         case 2:
+            content.attributedText = makeAttributedText(title: "스크린 타임 권한 설정")
+        case 3:
             content.attributedText = makeAttributedText(title: "앱 평가하기")
         default:
             content.text = ""
@@ -168,7 +179,7 @@ extension MenuViewController {
     
     private func _openSetting() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-
+        
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
@@ -194,6 +205,10 @@ extension MenuViewController {
             .font: UIFont.systemFont(ofSize: size, weight: weight),
             .foregroundColor: UIColor.white,
         ])
+    }
+    
+    @objc func onClickSwitch(sender: UISwitch) {
+        print(#function)
     }
     
 }
