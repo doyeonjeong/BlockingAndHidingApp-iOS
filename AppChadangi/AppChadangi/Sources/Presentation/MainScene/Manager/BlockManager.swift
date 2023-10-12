@@ -20,9 +20,9 @@ final class BlockManager: ObservableObject {
     
     @Published var isEmpty: Bool = true
     @Published var isBlocked: Bool = false
-    @Published var newSelection: FamilyActivitySelection = .init() {
+    @Published var selection: FamilyActivitySelection = .init() {
         didSet {
-            isEmpty = newSelection.applicationTokens.isEmpty
+            isEmpty = selection.applicationTokens.isEmpty
         }
     }
 
@@ -35,7 +35,8 @@ final class BlockManager: ObservableObject {
             repeats: true
         )
 
-        store.shield.applications = newSelection.applicationTokens
+        store.shield.applications = selection.applicationTokens
+        
         do {
             try deviceActivityCenter.startMonitoring(DeviceActivityName.daily, during: blockSchedule)
         } catch {

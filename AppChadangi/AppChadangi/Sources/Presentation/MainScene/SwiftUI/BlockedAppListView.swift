@@ -13,7 +13,6 @@ struct BlockedAppListView: View {
     
     @EnvironmentObject var bm: BlockManager
     @State var isPresented = false
-    @State var selection = FamilyActivitySelection()
     
     var body: some View {
         ZStack {
@@ -40,19 +39,19 @@ struct BlockedAppListView: View {
                         
                         ScrollView {
                             LazyVStack(alignment: .leading) {
-                                ForEach(Array(selection.applicationTokens), id: \.self) { selected in
+                                ForEach(Array(bm.selection.applicationTokens), id: \.self) { selected in
                                     Label(selected)
                                         .padding(.horizontal, 20)
                                         .padding(.bottom, 8)
                                 }
                                 
-                                ForEach(Array(selection.categoryTokens), id: \.self) { selected in
+                                ForEach(Array(bm.selection.categoryTokens), id: \.self) { selected in
                                     Label(selected)
                                         .padding(.horizontal, 20)
                                         .padding(.bottom, 8)
                                 }
                                 
-                                ForEach(Array(selection.webDomainTokens), id: \.self) { selected in
+                                ForEach(Array(bm.selection.webDomainTokens), id: \.self) { selected in
                                     Label(selected)
                                         .padding(.horizontal, 20)
                                         .padding(.bottom, 8)
@@ -75,10 +74,7 @@ struct BlockedAppListView: View {
                         .cornerRadius(8)
                 }
                 .padding(12)
-                .familyActivityPicker(isPresented: $isPresented, selection: $bm.newSelection)
-                .onChange(of: bm.newSelection) { newValue in
-                    selection = newValue
-                }
+                .familyActivityPicker(isPresented: $isPresented, selection: $bm.selection)
             }
         }
         .cornerRadius(16)
