@@ -127,7 +127,7 @@ extension MenuViewController: UITableViewDelegate {
 extension MenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -146,12 +146,13 @@ extension MenuViewController: UITableViewDataSource {
             content.attributedText = makeAttributedText(title: "App Version")
             content.secondaryAttributedText = makeAttributedText(title: _appVersion, size: 16, weight: .light)
             content.prefersSideBySideTextAndSecondaryText = true
+//        case 1:
+            // TODO: 다음 업데이트 전, Family Controls 앱 숨기기 기능 관련 추가 Request 필요 - 앱 심사 거절로 인한 주석처리
+            //content.attributedText = makeAttributedText(title: "앱 숨기기 모드: 추가 예정")
+            //cell.accessoryView = _controlSwitch
         case 1:
-            content.attributedText = makeAttributedText(title: "앱 숨기기 모드")
-            cell.accessoryView = _controlSwitch
-        case 2:
             content.attributedText = makeAttributedText(title: "스크린 타임 권한 설정")
-        case 3:
+        case 2:
             content.attributedText = makeAttributedText(title: "앱 평가하기")
         default:
             content.text = ""
