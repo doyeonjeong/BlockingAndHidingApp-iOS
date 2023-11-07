@@ -25,6 +25,7 @@ final class BlockManager: ObservableObject {
             isEmpty = selection.applicationTokens.isEmpty
         }
     }
+    @Published var isHide: Bool = false
 
     func block(completion: @escaping (Result<Void, Error>) -> Void) {
         let deviceActivityCenter = DeviceActivityCenter()
@@ -36,6 +37,9 @@ final class BlockManager: ObservableObject {
         )
 
         store.shield.applications = selection.applicationTokens
+        if isHide {
+            store.application.blockedApplications = selection.applications
+        }
         
         do {
             try deviceActivityCenter.startMonitoring(DeviceActivityName.daily, during: blockSchedule)
@@ -50,6 +54,7 @@ final class BlockManager: ObservableObject {
     func release() {
         isBlocked = false
         store.shield.applications = []
+        store.application.blockedApplications = []
     }
     
     func requestAuthorization() {

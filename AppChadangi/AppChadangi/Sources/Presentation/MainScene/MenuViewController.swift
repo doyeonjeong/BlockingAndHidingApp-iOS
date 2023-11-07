@@ -11,6 +11,8 @@ import StoreKit
 
 final class MenuViewController: UIViewController {
     
+    let bm = BlockManager()
+    
     private lazy var _contactButton: UIView = {
         
         let imageView = UIImageView()
@@ -208,7 +210,13 @@ extension MenuViewController {
     }
     
     @objc func onClickSwitch(sender: UISwitch) {
-        print(#function)
+        print("now Switch On: \(sender.isOn)")
+        if sender.isOn {
+            bm.isBlocked = true
+            bm.block { result in
+                print("here")
+            }
+        }
     }
     
 }
