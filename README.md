@@ -5,9 +5,11 @@ Blocking &amp; Hiding App
 
 **Download**
 
-개발은 완료되었으나, FamilyControls Entitlement 권한 승인 요청이 지연되어 배포하지 못함
+https://apps.apple.com/us/app/%EC%95%B1-%EC%B0%A8%EB%8B%A8%EA%B8%B0/id6455080663
 
-[Family Contols 문서](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_family-controls)에 소개된 [request permission](https://developer.apple.com/contact/request/family-controls-distribution)를 요청하고 답변 대기중
+**Issue**
+
+FamilyControls Entitlement 권한 승인 요청 지연 ([Family Contols 문서](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_family-controls)에 소개된 [request permission](https://developer.apple.com/contact/request/family-controls-distribution))
 
 **Source**
 
