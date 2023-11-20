@@ -78,8 +78,8 @@ extension MenuViewController {
     
     private func _setUI() {
         self.view.applyGradient(colors: [
-            UIColor(red: 0.99, green: 0.65, blue: 0.04, alpha: 1.00).cgColor,
-            UIColor(red: 0.85, green: 0.11, blue: 0.07, alpha: 1.00).cgColor
+            UIColor(red: 0.99, green: 0.65, blue: 0.04, alpha: 1.00).cgColor, // ffcc00
+            UIColor(red: 0.85, green: 0.11, blue: 0.07, alpha: 1.00).cgColor // 
         ])
     }
     
@@ -137,6 +137,7 @@ extension MenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath)
         cell.backgroundColor = .clear
+        cell.selectionStyle = .none
         cell.selectionStyle = .none
         
         var content = cell.defaultContentConfiguration()

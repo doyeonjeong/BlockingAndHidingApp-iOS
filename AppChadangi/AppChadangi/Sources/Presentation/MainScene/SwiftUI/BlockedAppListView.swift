@@ -7,7 +7,6 @@
 
 import SwiftUI
 import FamilyControls
-import DeviceActivity
 
 struct BlockedAppListView: View {
     

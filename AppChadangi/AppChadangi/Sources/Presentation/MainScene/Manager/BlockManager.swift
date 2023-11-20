@@ -53,8 +53,11 @@ final class BlockManager: ObservableObject {
     
     func release() {
         isBlocked = false
+        
         store.shield.applications = []
         store.application.blockedApplications = []
+        
+        selection = FamilyActivitySelection()
     }
     
     func requestAuthorization() {
