@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,42 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="wEI-3z-oVg">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="wEI-3z-oVg">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Nzc-3E-01f">
-                                <rect key="frame" x="146.66666666666666" y="356" width="100" height="140"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_triangle" translatesAutoresizingMaskIntoConstraints="NO" id="oEF-YR-fmq">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="Wto-YO-V4e"/>
-                                            <constraint firstAttribute="width" secondItem="oEF-YR-fmq" secondAttribute="height" multiplier="1:1" id="m7n-qH-NwS"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_text" translatesAutoresizingMaskIntoConstraints="NO" id="9Vh-M4-5Ab">
-                                        <rect key="frame" x="0.0" y="100" width="100" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="M2e-re-wAs"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="oEF-YR-fmq" firstAttribute="top" secondItem="Nzc-3E-01f" secondAttribute="top" id="KmP-GA-xMG"/>
-                                    <constraint firstItem="9Vh-M4-5Ab" firstAttribute="centerX" secondItem="Nzc-3E-01f" secondAttribute="centerX" id="Mtu-YJ-Cd2"/>
-                                    <constraint firstAttribute="width" secondItem="Nzc-3E-01f" secondAttribute="height" multiplier="1:1.4" id="f1t-Fp-BVV"/>
-                                    <constraint firstAttribute="bottom" secondItem="9Vh-M4-5Ab" secondAttribute="bottom" id="iGN-0U-Q7b"/>
-                                    <constraint firstItem="oEF-YR-fmq" firstAttribute="centerX" secondItem="Nzc-3E-01f" secondAttribute="centerX" id="uVl-Sf-rbu"/>
-                                    <constraint firstAttribute="width" constant="100" id="vmv-ec-ZDJ"/>
-                                </constraints>
-                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wEI-3z-oVg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6Bx-dW-iVb"/>
-                            <constraint firstItem="Nzc-3E-01f" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="BDg-DY-PWx"/>
-                            <constraint firstItem="Nzc-3E-01f" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="D27-8M-Sis"/>
                             <constraint firstItem="wEI-3z-oVg" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="GTi-IY-I4d"/>
                             <constraint firstAttribute="bottom" secondItem="wEI-3z-oVg" secondAttribute="bottom" id="Vg7-G7-fxa"/>
                             <constraint firstItem="wEI-3z-oVg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ye2-SI-Hdh"/>
@@ -64,9 +37,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="393" height="852"/>
-        <image name="logo_text" width="598" height="164"/>
-        <image name="logo_triangle" width="500" height="500.33334350585938"/>
+        <image name="LaunchScreen" width="131" height="284"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
